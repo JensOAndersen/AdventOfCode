@@ -6,10 +6,11 @@ namespace AoC.Solutions.Y2021
 {
     public class Day1 : SolutionBase<int, object>
     {
+        private InputSourceBase _inputSource;
 
         public Day1(ResultParsers resPar) : base(resPar.IntToString, resPar.Def)
         {
-
+            _inputSource = InputSourceBase.GetInstance(2021);
         }
 
         public override int Day => 1;

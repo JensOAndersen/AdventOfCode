@@ -10,9 +10,11 @@ namespace AoC.Core.Engine
 {
     public class AocEngine
     {
+        private readonly Func<string> _getValueFromUser;
+        private readonly Action<string> _sendMessageToUser;
         private Dictionary<int, Dictionary<int, ISolution>> _solutions;
 
-        public AocEngine()
+        public AocEngine(Func<string> getValueFromUser, Action<string> sendMessageToUser)
         {
             var aocSolution = Assembly.Load("AoC.Solutions");
             var inheritedTypes = aocSolution.GetTypes().Where(type => typeof(ISolution).IsAssignableFrom(type));
@@ -30,6 +32,34 @@ namespace AoC.Core.Engine
 
                 return dict;
             });
+
+            _getValueFromUser = getValueFromUser;
+            _sendMessageToUser = sendMessageToUser;
+        }
+
+        public void Start()
+        {
+            _sendMessageToUser("Welcome to AoC, please choose a year: " + string.Join(", ", _solutions.Select(x => x.Key)));
+            _sendMessageToUser("Otherwise, press return to get latest solution");
+            var valueFromUser = _getValueFromUser();
+
+            if (!string.IsNullOrWhiteSpace(valueFromUser) && 
+                int.TryParse(valueFromUser, out int year) && 
+                _solutions.TryGetValue(year, out var yearSolutions))
+            {
+                _sendMessageToUser("Todo:Implement");*//TODO
+            } else
+            {
+                _sendMessageToUser("Solving latest");
+                var maxYear = _solutions.Max(x => x.Key);
+                var maxYearDict = _solutions[maxYear];
+                var maxDay = maxYearDict.Max(x => x.Key);
+                var maxDaySolution = maxYearDict[maxDay];
+
+                _sendMessageToUser(maxDaySolution.SolvePartOne());
+                _sendMessageToUser(maxDaySolution.SolvePartTwo());
+            }
+
         }
     }
 }

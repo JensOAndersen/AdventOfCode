@@ -8,11 +8,8 @@ namespace AoC.Cli
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            var engine = new AocEngine();
-
-            Console.ReadKey();
+            var engine = new AocEngine(Console.ReadLine, Console.WriteLine);
+            engine.Start();
         }
     }
 }
