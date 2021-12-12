@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AoC.Library\AoC.Library.csproj" />
+    <ProjectReference Include="..\Aoc2021\AoC.Solutions.csproj" />
+  </ItemGroup>
+
+</Project>

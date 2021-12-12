@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Net;
 using System.Text.Json.Serialization;
 
-namespace AoCHelpers.Helpers
+namespace AoC.Library.Helpers
 {
     public class InputSourceBase
     {
@@ -42,8 +42,8 @@ namespace AoCHelpers.Helpers
 
             if (result.StatusCode != HttpStatusCode.OK)
                 throw new Exception("Could not get input from server: " + result.StatusCode);
-         
-                    
+
+
             var input = await result.Content.ReadAsStringAsync();
 
             File.WriteAllText(Path.Combine(string.Format(_inputDir, _ofYear), fileInputName), input);
