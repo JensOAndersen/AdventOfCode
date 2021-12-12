@@ -30,7 +30,7 @@ namespace AoC.Library.Helpers
         {
             //i can reuse this next year
             var inputAddress = string.Format(_inputSourceFormat, 2021, dayNum);
-            var fileInputName = string.Format(_inputNameFormat, dayNum);
+            var fileInputName = Path.Combine(string.Format(_inputDir, _ofYear), string.Format(_inputNameFormat, dayNum));
 
             if (File.Exists(fileInputName))
                 return transformFunc(File.ReadAllText(fileInputName));
@@ -46,7 +46,7 @@ namespace AoC.Library.Helpers
 
             var input = await result.Content.ReadAsStringAsync();
 
-            File.WriteAllText(Path.Combine(string.Format(_inputDir, _ofYear), fileInputName), input);
+            File.WriteAllText(fileInputName, input);
             return transformFunc(input);
         }
 

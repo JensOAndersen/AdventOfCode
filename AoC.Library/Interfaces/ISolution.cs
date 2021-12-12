@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace AoC.Library.Interfaces
 {
@@ -9,5 +10,6 @@ namespace AoC.Library.Interfaces
 
         string SolvePartOne();
         string SolvePartTwo();
+        Task Init();
     }
 }

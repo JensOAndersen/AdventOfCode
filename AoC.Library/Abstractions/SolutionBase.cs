@@ -1,5 +1,6 @@
 ﻿using AoC.Library.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace AoC.Library.Abstractions
 {
@@ -42,5 +43,6 @@ namespace AoC.Library.Abstractions
         }
         protected virtual TResultPartOne PartOneImplementation() => default;
         protected virtual TResultPartTwo PartTwoImplementation() => default;
+        public abstract Task Init();
     }
 }

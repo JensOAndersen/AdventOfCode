@@ -9,7 +9,7 @@ namespace AoC.Cli
         static async Task Main(string[] args)
         {
             var engine = new AocEngine(Console.ReadLine, Console.WriteLine);
-            engine.Start();
+            await engine.Start();
         }
     }
 }

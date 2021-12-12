@@ -37,7 +37,7 @@ namespace AoC.Core.Engine
             _sendMessageToUser = sendMessageToUser;
         }
 
-        public void Start()
+        public async Task Start()
         {
             _sendMessageToUser("Welcome to AoC, please choose a year: " + string.Join(", ", _solutions.Select(x => x.Key)));
             _sendMessageToUser("Otherwise, press return to get latest solution");
@@ -47,7 +47,7 @@ namespace AoC.Core.Engine
                 int.TryParse(valueFromUser, out int year) && 
                 _solutions.TryGetValue(year, out var yearSolutions))
             {
-                _sendMessageToUser("Todo:Implement");*//TODO
+                _sendMessageToUser("Todo:Implement");//TODO
             } else
             {
                 _sendMessageToUser("Solving latest");
@@ -55,6 +55,8 @@ namespace AoC.Core.Engine
                 var maxYearDict = _solutions[maxYear];
                 var maxDay = maxYearDict.Max(x => x.Key);
                 var maxDaySolution = maxYearDict[maxDay];
+
+                await maxDaySolution.Init();
 
                 _sendMessageToUser(maxDaySolution.SolvePartOne());
                 _sendMessageToUser(maxDaySolution.SolvePartTwo());
