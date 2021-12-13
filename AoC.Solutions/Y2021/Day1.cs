@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace AoC.Solutions.Y2021
 {
-    public class Day1 : SolutionBase<int, object>
+    public class Day1 : SolutionBase<int, int>
     {
-        private InputSourceBase _inputSource;
         private List<int> _data;
 
-        public Day1(ResultParsers resPar) : base(resPar.IntToString, resPar.Def)
+        public Day1(ResultParsers resPar) : base(resPar.IntToString, resPar.IntToString)
         {
-            _inputSource = InputSourceBase.GetInstance(2021);
         }
 
         public override int Day => 1;
         public override int Year => 2021;
 
-        public override async Task Init() => _data = await _inputSource.GetInputForDay(1, str =>
+        public override async Task Init() => _data = await InputSource.GetInputForDay(1, str =>
         {
             var toReturn = new List<int>();
             foreach (var numStr in str.Trim().Split('\n'))
@@ -34,9 +32,26 @@ namespace AoC.Solutions.Y2021
             return toReturn;
         });
 
-        protected override int PartOneImplementation()
+        protected override int PartOneImplementation() => NumOfSumLargerThanPrevious(_data);
+
+        protected override int PartTwoImplementation()
         {
-            var res = _data.Aggregate(new {
+            var triplets = new Dictionary<int, int>();
+            
+            for (int i = 0; i < _data.Count-2; i++)
+            {
+                var current = _data[i];
+                var next = _data[i+1];
+                var nextNext = _data[i+2];
+
+                triplets.Add(i, current + next + nextNext);
+            }
+            return NumOfSumLargerThanPrevious(triplets.Values);
+        }
+
+        private int NumOfSumLargerThanPrevious(IEnumerable<int> nums)
+        {
+            var res = nums.Aggregate(new {
                 Previous = 0,
                 Depth = 0       
             }, (data, current) =>
@@ -53,11 +68,6 @@ namespace AoC.Solutions.Y2021
             });
 
             return res.Depth;
-        }
-
-        protected override object PartTwoImplementation()
-        {
-            return 1;
         }
     }
 }

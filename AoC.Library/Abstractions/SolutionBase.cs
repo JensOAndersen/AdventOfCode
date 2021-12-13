@@ -1,4 +1,5 @@
-﻿using AoC.Library.Interfaces;
+﻿using AoC.Library.Helpers;
+using AoC.Library.Interfaces;
 using System;
 using System.Threading.Tasks;
 
@@ -13,10 +14,14 @@ namespace AoC.Library.Abstractions
         public abstract int Day { get; }
         public abstract int Year { get; }
 
+        protected InputSourceBase InputSource {  get; set; }
+
         protected SolutionBase(Func<TResultPartOne, string> resultToStringPartOne, Func<TResultPartTwo, string> resultToStringPartTwo)
         {
             _resultToStringPartOne = resultToStringPartOne;
             _resultToStringPartTwo = resultToStringPartTwo;
+
+            InputSource = InputSourceBase.GetInstance(Year);
         }
 
         public string SolvePartOne()

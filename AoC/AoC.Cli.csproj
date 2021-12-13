@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AoC.Core\AoC.Core.csproj" />
     <ProjectReference Include="..\AoCHelpers\AoC.Core.csproj" />
   </ItemGroup>
 

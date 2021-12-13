@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AoC.Library\AoC.Library.csproj" />
-    <ProjectReference Include="..\Aoc2021\AoC.Solutions.csproj" />
+    <ProjectReference Include="..\AoC.Solutions\AoC.Solutions.csproj" />
   </ItemGroup>
 
 </Project>
