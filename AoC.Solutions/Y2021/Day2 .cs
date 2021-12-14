@@ -3,7 +3,6 @@ using AoC.Library.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AoC.Solutions.Y2021
@@ -14,7 +13,6 @@ namespace AoC.Solutions.Y2021
 
         public Day2(ResultParsers res) : base(res.IntToString, res.IntToString)
         {
-
         }
 
         public override int Day => 2;
