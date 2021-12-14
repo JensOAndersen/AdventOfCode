@@ -8,4 +8,19 @@
     <ProjectReference Include="..\AoC.Library\AoC.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Sample2021.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Sample2021.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Sample2021.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sample2021.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
