@@ -64,6 +64,28 @@ namespace AoC.Solutions.Y2021
                 return state;
             });
 
+
+            /*var maxY = result.Keys.Max(x => x.Y)+1;
+            var maxX = result.Keys.Max(x => x.X)+1;
+
+            var res2D = new int[maxY, maxX];
+
+            foreach (var item in result)
+            {
+                res2D[item.Key.Y, item.Key.X] = item.Value;
+            }
+
+            var stringRes = "";
+
+            for (int i = 0; i < res2D.GetLength(0); i++)
+            {
+                for (int j = 0; j < res2D.GetLength(1); j++)
+                {
+                    stringRes += res2D[i, j].ToString();
+                }
+                stringRes += "\n";
+            }*/
+
             return result.Values.Where(x => x > 1).Count();
         }
 
