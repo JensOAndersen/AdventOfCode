@@ -10,5 +10,7 @@ namespace AoC.Library.Helpers
     {
         public string IntToString(int res) => res.ToString();
         public string Def(object obj) => obj.ToString();
+
+        public string LongToString(long arg) => arg.ToString();
     }
 }
