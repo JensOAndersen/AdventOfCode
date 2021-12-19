@@ -34,7 +34,7 @@ namespace AoC.Solutions.Y2021
 
             //brute force
             for (int i = min; i < max; i++)
-                resDict.Add(i, CalculateFuelCostForPosition(i));
+                resDict.Add(i, CalculateFuelCostForPositionPartOne(i));
 
             var rest1 = resDict.Values.Min();
 
@@ -44,12 +44,29 @@ namespace AoC.Solutions.Y2021
             return rest1;
         }
 
+
+        protected override int PartTwoImplementation()
+        {
+            int min = _data.Min();
+            int max = _data.Max();
+
+            var resDict = new Dictionary<int, int>();
+
+            //brute force
+            for (int i = min; i < max; i++)
+                resDict.Add(i, CalculateFuelCostForPositionPartTwo(i));
+
+            var rest1 = resDict.Values.Min();
+
+            return rest1;
+        }
+
         //actually trying to be smart
         private int CalculatePartOneRecursively(int min, int max, int previousMin)
         {
             //calculate fuel cost for min and max values
-            var minFuel = CalculateFuelCostForPosition(min);
-            var maxFuel = CalculateFuelCostForPosition(max);
+            var minFuel = CalculateFuelCostForPositionPartOne(min);
+            var maxFuel = CalculateFuelCostForPositionPartOne(max);
 
             //find midpoint
             var halfPoint = (max + min) / 2;
@@ -72,6 +89,13 @@ namespace AoC.Solutions.Y2021
             return CalculatePartOneRecursively(halfPoint, max, leastFuel);
         }
 
-        private int CalculateFuelCostForPosition(int pos) => _data.Select(x => Math.Abs(pos - x)).Sum();
+        private int CalculateFuelCostForPositionPartOne(int pos) => _data.Select(x => Math.Abs(pos - x)).Sum();
+        private int CalculateFuelCostForPositionPartTwo(int pos) => _data.Select(x =>
+        {
+            var val = Math.Abs(pos - x);
+
+            var resVal = ((int)Math.Pow(val, 2) + val) / 2;
+            return resVal;
+        }).Sum();
     }
 }
