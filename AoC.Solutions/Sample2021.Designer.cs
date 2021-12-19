@@ -113,5 +113,20 @@ namespace AoC.Solutions {
                 return ResourceManager.GetString("Day6", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
+        ///edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc
+        ///fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef | cg cg fdcagb cbg
+        ///fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega | efabcd cedba gadfec cb
+        ///aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga | gecf egdcabf bgf bfgea
+        ///fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf | gebdcfa ecba ca fadegcb
+        ///dbcfg [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Day8 {
+            get {
+                return ResourceManager.GetString("Day8", resourceCulture);
+            }
+        }
     }
 }
